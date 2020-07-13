@@ -23,16 +23,16 @@ dp[i] = max(dp[i-1], prices[i] - min(price[:i]))
 
 BC:
 dp[0] = 0
-```python
-class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        if not prices:
-            return 0
-        max_profit = 0
-        cur_min = prices[0]
-        for i in prices[1:]:
-            max_profit = max(max_profit, i - cur_min)
-            if i < cur_min:
-                cur_min = i
-        return max_profit
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int maxprofit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1])
+                maxprofit += prices[i] - prices[i - 1];
+        }
+        return maxprofit;
+    }
+}
+
 ```
